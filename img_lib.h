@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace img_lib
-{
+{   
 
     struct Size
     {
@@ -74,7 +74,5 @@ namespace img_lib
 
         std::vector<Color> pixels_;
     };
-
-    void NegateInplace(img_lib::Image &image);
 
 } // namespace img_lib

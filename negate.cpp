@@ -1,9 +1,26 @@
+#include "img_lib.h"
 #include "ppm_image.h"
 
 #include <iostream>
 #include <string_view>
 
 using namespace std;
+
+    void NegateInplace(img_lib::Image &image)
+    {
+
+        for (int y = 0; y < image.GetHeight(); ++y)
+        {
+            img_lib::Color *line = image.GetLine(y);
+
+            for (int x = 0; x < image.GetWidth(); ++x)
+            {
+                line[x].r = std::byte(255 - std::to_integer<int>(line[x].r));
+                line[x].g = std::byte(255 - std::to_integer<int>(line[x].g));
+                line[x].b = std::byte(255 - std::to_integer<int>(line[x].b));
+            }
+        }
+    }
 
 int main(int argc, const char **argv)
 {
@@ -20,7 +37,7 @@ int main(int argc, const char **argv)
         return 2;
     }
 
-    img_lib::NegateInplace(image);
+    NegateInplace(image);
 
     if (!img_lib::SavePPM(argv[2], image))
     {
