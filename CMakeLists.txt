@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SOURCE img_lib.h img_lib.cpp ppm_image.h ppm_image.cpp)
 
 add_executable(negate negate.cpp ${SOURCE})
-#add_executable(hmirr hmirr.cpp ${SOURCE})
+add_executable(hmirr hmirr.cpp ${SOURCE})
 #add_executable(vmirr vmirr.cpp ${SOURCE})
