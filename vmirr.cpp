@@ -5,11 +5,12 @@
 
 using namespace std;
 
-void HMirrInplace(img_lib::Image& image){
-    for (int y = 0; y < image.GetHeight(); ++y){
-        img_lib::Color* line = image.GetLine(y);
-        for (int x = 0; x < image.GetWidth()/2; ++x){
-            swap(line[x], line[image.GetWidth() - x - 1]);
+void VMirrInplace(img_lib::Image& image){
+    for (int y = 0; y < image.GetHeight()/2; ++y){
+        img_lib::Color* line_up = image.GetLine(y);
+        img_lib::Color* line_down = image.GetLine(image.GetHeight() - y - 1);
+        for (int x = 0; x < image.GetWidth(); ++x){
+            swap(line_up[x], line_down[x]);
         }       
     }
 }
@@ -26,7 +27,7 @@ int main(int argc, const char** argv) {
         return 2;
     }
 
-    HMirrInplace(image);
+    VMirrInplace(image);
 
     if (!img_lib::SavePPM(argv[2], image)) {
         cerr << "Error saving image"sv << endl;
