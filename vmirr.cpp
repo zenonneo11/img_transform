@@ -9,9 +9,7 @@ void VMirrInplace(img_lib::Image& image){
     for (int y = 0; y < image.GetHeight()/2; ++y){
         img_lib::Color* line_up = image.GetLine(y);
         img_lib::Color* line_down = image.GetLine(image.GetHeight() - y - 1);
-        for (int x = 0; x < image.GetWidth(); ++x){
-            swap(line_up[x], line_down[x]);
-        }       
+        swap_ranges(line_up, line_up + image.GetStep(), line_down);
     }
 }
 
