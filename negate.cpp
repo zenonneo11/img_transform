@@ -1,5 +1,5 @@
-#include "img_lib.h"
-#include "ppm_image.h"
+#include <img_lib.h>
+#include <ppm_image.h>
 
 #include <iostream>
 #include <string_view>
